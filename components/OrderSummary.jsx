@@ -65,13 +65,13 @@ const OrderSummary = () => {
   const createOrder = async () => {
     try {
       if (!user) {
-        return toast('Please login to place order', {
+        return toast('注文するにはログインしてください', {
           icon: '⚠️',
         });
       }
 
       if (!selectedAddress) {
-        return toast.error('Please select an address');
+        return toast.error('住所を選択してください');
       }
 
       let cartItemsArray = Object.keys(cartItems).map((key) => ({
@@ -81,7 +81,7 @@ const OrderSummary = () => {
       cartItemsArray = cartItemsArray.filter((item) => item.quantity > 0);
 
       if (cartItemsArray.length === 0) {
-        return toast.error('Cart is empty');
+        return toast.error('カートは空です');
       }
 
       const token = await getToken();
@@ -118,13 +118,13 @@ const OrderSummary = () => {
   return (
     <div className="w-full md:w-96 bg-gray-500/5 p-5">
       <h2 className="text-xl md:text-2xl font-medium text-gray-700">
-        Order Summary
+        オーダー概要
       </h2>
       <hr className="border-gray-500/30 my-5" />
       <div className="space-y-6">
         <div>
           <label className="text-base font-medium uppercase text-gray-600 block mb-2">
-            Select Address
+            住所を選択
           </label>
           <div className="relative inline-block w-full text-sm border">
             <button
@@ -169,7 +169,7 @@ const OrderSummary = () => {
                       className="text-red-500 hover:underline ml-2"
                       onClick={() => deleteAddress(address._id)}
                     >
-                      Delete
+                      削除
                     </button>
                   </li>
                 ))}
@@ -177,7 +177,7 @@ const OrderSummary = () => {
                   onClick={() => router.push('/add-address')}
                   className="px-4 py-2 hover:bg-gray-500/10 cursor-pointer text-center"
                 >
-                  + Add New Address
+                  + 新しい住所を追加する
                 </li>
               </ul>
             )}
@@ -186,16 +186,16 @@ const OrderSummary = () => {
 
         <div>
           <label className="text-base font-medium uppercase text-gray-600 block mb-2">
-            Promo Code
+            プロモコード
           </label>
           <div className="flex flex-col items-start gap-3">
             <input
               type="text"
-              placeholder="Enter promo code"
+              placeholder="プロモコードを入力"
               className="flex-grow w-full outline-none p-2.5 text-gray-600 border"
             />
             <button className="bg-orange-600 text-white px-9 py-2 hover:bg-orange-700">
-              Apply
+              応募する
             </button>
           </div>
         </div>
@@ -222,7 +222,7 @@ const OrderSummary = () => {
             </p>
           </div>
           <div className="flex justify-between text-lg md:text-xl font-medium border-t pt-3">
-            <p>Total</p>
+            <p>合計</p>
             <p>
               {currency}
               {getCartAmount() + Math.floor(getCartAmount() * 0.02)}

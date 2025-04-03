@@ -33,7 +33,7 @@ const CommentSection = React.memo(({ productId, user, clerkUser }) => {
 
   const handleAddComment = async () => {
     if (!user) {
-      return toast('Please login to comment', { icon: '⚠️' });
+      return toast('コメントするにはログインしてください', { icon: '⚠️' });
     }
     if (!newComment.trim()) return;
 
@@ -48,7 +48,7 @@ const CommentSection = React.memo(({ productId, user, clerkUser }) => {
       if (data.success) {
         setComments([data.comment, ...comments]);
         setNewComment('');
-        toast.success('Comment added!');
+        toast.success('コメントが追加された！');
       }
     } catch (error) {
       toast.error(error.message);
@@ -57,7 +57,7 @@ const CommentSection = React.memo(({ productId, user, clerkUser }) => {
 
   const handleReaction = async (commentId, reaction) => {
     if (!user) {
-      return toast('Please login to react', { icon: '⚠️' });
+      return toast('反応するにはログインしてください', { icon: '⚠️' });
     }
 
     try {
@@ -99,20 +99,20 @@ const CommentSection = React.memo(({ productId, user, clerkUser }) => {
 
   return (
     <div className="mt-20 mb-16">
-      <h2 className="text-2xl font-medium mb-8">Comments</h2>
+      <h2 className="text-2xl font-medium mb-8">コメント</h2>
       <div className="flex gap-4 mb-8">
         <input
           type="text"
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Add a comment..."
+          placeholder="コメントを追加..."
           className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500"
         />
         <button
           onClick={handleAddComment}
           className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition"
         >
-          Post
+          ポスト
         </button>
       </div>
 
@@ -140,7 +140,7 @@ const CommentSection = React.memo(({ productId, user, clerkUser }) => {
                   onClick={() => handleDeleteComment(comment._id)}
                   className="text-red-500 hover:text-red-600 text-sm"
                 >
-                  Delete
+                  削除
                 </button>
               )}
             </div>
@@ -264,16 +264,16 @@ const Product = () => {
             <div className="overflow-x-auto">
               <table className="table-auto border-collapse w-full max-w-72">
                 <tbody>
-                  <tr>
+                  {/* <tr>
                     <td className="text-gray-600 font-medium">Brand</td>
                     <td className="text-gray-800/50 ">Generic</td>
                   </tr>
                   <tr>
                     <td className="text-gray-600 font-medium">Color</td>
                     <td className="text-gray-800/50 ">Multi</td>
-                  </tr>
+                  </tr> */}
                   <tr>
-                    <td className="text-gray-600 font-medium">Category</td>
+                    <td className="text-gray-600 font-medium">カテゴリー</td>
                     <td className="text-gray-800/50">{productData.category}</td>
                   </tr>
                 </tbody>
@@ -285,7 +285,7 @@ const Product = () => {
                 onClick={() => addToCart(productData._id)}
                 className="w-full py-3.5 bg-gray-100 text-gray-800/80 hover:bg-gray-200 transition"
               >
-                Add to Cart
+                カートに入れる
               </button>
               <button
                 onClick={() => {
@@ -294,7 +294,7 @@ const Product = () => {
                 }}
                 className="w-full py-3.5 bg-orange-500 text-white hover:bg-orange-600 transition"
               >
-                Buy now
+                購入する
               </button>
             </div>
           </div>
@@ -305,7 +305,7 @@ const Product = () => {
           user={user}
           clerkUser={clerkUser}
         />
-        <div className="flex flex-col items-center">
+        {/* <div className="flex flex-col items-center">
           <div className="flex flex-col items-center mb-4 mt-16">
             <p className="text-3xl font-medium">
               Featured{' '}
@@ -321,7 +321,7 @@ const Product = () => {
           <button className="px-8 py-2 mb-16 border rounded text-gray-500/70 hover:bg-slate-50/90 transition">
             See more
           </button>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>

@@ -6,18 +6,15 @@ const HeaderSlider = () => {
   const sliderData = [
     {
       id: 1,
-      imgSrc: assets.wall_2,
-      // title: 'Premium Audio',
+      imgSrc: assets.organic_gallery_wall,
     },
     {
       id: 2,
-      imgSrc: assets.organic_gallery_wall,
-      // title: 'Gaming',
+      imgSrc: assets.wall_2,
     },
     {
       id: 3,
       imgSrc: assets.wall_3,
-      // title: 'Technology',
     },
   ];
 
@@ -26,7 +23,7 @@ const HeaderSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % sliderData.length);
-    }, 5000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [sliderData.length]);
 

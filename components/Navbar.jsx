@@ -28,26 +28,26 @@ const Navbar = () => {
           href="/"
           className="hover:text-gray-900 transition text-lg font-semibold"
         >
-          Home
+          ホーム
         </Link>
         <Link
           href="/all-products"
           className="hover:text-gray-900 transition text-lg font-semibold"
         >
-          Gallery
+          ギャラリー
         </Link>
         <Link
           href="/"
           className="hover:text-gray-900 transition text-lg font-semibold"
         >
-          Vision
+          ビジョン
         </Link>
         {isSeller && (
           <button
             onClick={() => router.push('/seller')}
-            className="text-sm font-semibold border px-4 py-2 rounded-full"
+            className="text-lg font-semibold border px-4 py-2 rounded-full"
           >
-            Seller Dashboard
+            管理者ダッシュボード
           </button>
         )}
       </div>
@@ -91,7 +91,7 @@ const Navbar = () => {
         {isSeller && (
           <button
             onClick={() => router.push('/seller')}
-            className="text-sm font-semibold border px-4 py-2 rounded-full"
+            className="text-lg font-semibold border px-4 py-2 rounded-full"
           >
             Seller Dashboard
           </button>
