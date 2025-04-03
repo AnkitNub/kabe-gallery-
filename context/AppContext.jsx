@@ -1,9 +1,9 @@
-"use client";
-import { useAuth, useUser } from "@clerk/nextjs";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { createContext, useContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+'use client';
+import { useAuth, useUser } from '@clerk/nextjs';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { createContext, useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 // import { productsDummyData, userDummyData } from "@/assets/assets";
 
 export const AppContext = createContext();
@@ -26,7 +26,7 @@ export const AppContextProvider = (props) => {
 
   const fetchProductData = async () => {
     try {
-      const { data } = await axios.get("/api/product/list");
+      const { data } = await axios.get('/api/product/list');
 
       if (data.success) {
         setProducts(data.products);
@@ -41,13 +41,13 @@ export const AppContextProvider = (props) => {
 
   const fetchUserData = async () => {
     try {
-      if (user.publicMetadata.role === "seller") {
+      if (user.publicMetadata.role === 'seller') {
         setIsSeller(true);
       }
 
       const token = await getToken();
 
-      const { data } = await axios.get("/api/user/data", {
+      const { data } = await axios.get('/api/user/data', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -64,8 +64,8 @@ export const AppContextProvider = (props) => {
 
   const addToCart = async (itemId) => {
     if (!user) {
-      return toast("Please login", {
-        icon: "⚠️",
+      return toast('Please login', {
+        icon: '⚠️',
       });
     }
 
@@ -80,11 +80,11 @@ export const AppContextProvider = (props) => {
       try {
         const token = await getToken();
         await axios.post(
-          "/api/cart/update",
+          '/api/cart/update',
           { cartData },
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        toast.success("Item added to cart");
+        toast.success('Item added to cart');
       } catch (error) {
         toast.error(error.message);
       }
@@ -103,11 +103,11 @@ export const AppContextProvider = (props) => {
       try {
         const token = await getToken();
         await axios.post(
-          "/api/cart/update",
+          '/api/cart/update',
           { cartData },
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        toast.success("Cart Updated");
+        toast.success('Cart Updated');
       } catch (error) {
         toast.error(error.message);
       }
@@ -126,11 +126,15 @@ export const AppContextProvider = (props) => {
 
   const getCartAmount = () => {
     let totalAmount = 0;
-    for (const items in cartItems) {
-      let itemInfo = products.find((product) => product._id === items);
-      if (cartItems[items] > 0) {
-        totalAmount += itemInfo.offerPrice * cartItems[items];
+    try {
+      for (const items in cartItems) {
+        let itemInfo = products.find((product) => product?._id === items);
+        if (cartItems[items] > 0 && itemInfo?.offerPrice) {
+          totalAmount += itemInfo.offerPrice * cartItems[items];
+        }
       }
+    } catch (error) {
+      console.error('Error calculating cart amount:', error);
     }
     return Math.floor(totalAmount * 100) / 100;
   };

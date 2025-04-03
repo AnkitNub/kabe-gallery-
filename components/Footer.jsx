@@ -9,35 +9,28 @@ const Footer = () => {
         <div className="w-4/5">
           <Image className="w-28 md:w-32" src={''} alt="logo" />
           <p className="mt-6 text-sm">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            Kabe
+            Shareでは、アートはあなたを笑顔にするものだと信じています！面白くて、風変わりで、ミームにインスパイアされたユニークなアートワークのコレクションをご用意しています。ダジャレ、ポップカルチャー、気まぐれなイラストなど、ユーモア好きにはたまらないコレクションです。
           </p>
         </div>
 
         <div className="w-1/2 flex items-center justify-start md:justify-center">
           <div>
-            <h2 className="font-medium text-gray-900 mb-5">Company</h2>
+            <h2 className="font-medium text-gray-900 mb-5">会社概要</h2>
             <ul className="text-sm space-y-2">
               <li>
                 <a className="hover:underline transition" href="#">
-                  Home
+                  ホーム
                 </a>
               </li>
               <li>
                 <a className="hover:underline transition" href="#">
-                  About us
+                  ギャラリー
                 </a>
               </li>
               <li>
                 <a className="hover:underline transition" href="#">
-                  Contact us
-                </a>
-              </li>
-              <li>
-                <a className="hover:underline transition" href="#">
-                  Privacy policy
+                  ビジョン
                 </a>
               </li>
             </ul>
@@ -46,10 +39,10 @@ const Footer = () => {
 
         <div className="w-1/2 flex items-start justify-start md:justify-center">
           <div>
-            <h2 className="font-medium text-gray-900 mb-5">Get in touch</h2>
+            <h2 className="font-medium text-gray-900 mb-5">連絡先</h2>
             <div className="text-sm space-y-2">
-              <p>+1-234-567-890</p>
-              <p>@gmail.com</p>
+              <p>090-6723-1845</p>
+              <p>kabeshare@gmail.com</p>
             </div>
           </div>
         </div>
