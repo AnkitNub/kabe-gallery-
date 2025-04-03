@@ -11,74 +11,87 @@ const Navbar = () => {
   const { openSignIn } = useClerk();
 
   return (
-    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700">
-      <Image
-        className="cursor-pointer w-28 md:w-32"
-        onClick={() => router.push('/')}
-        // src={assets.logo}
-        alt="Kabe Share"
-      />
-      <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
-        <Link href="/" className="hover:text-gray-900 transition">
+    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-6 border-b border-gray-300 text-gray-700 bg-[#FAEBD7] relative">
+      <div className="w-[160px]">
+        {' '}
+        {/* Fixed width container for logo */}
+        <Image
+          className="cursor-pointer w-16 md:w-18 text-gray-800"
+          onClick={() => router.push('/')}
+          src={assets.kabe_share_logo}
+          alt="Kabe Share"
+        />
+      </div>
+
+      <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-4 lg:gap-8 max-md:hidden">
+        <Link
+          href="/"
+          className="hover:text-gray-900 transition text-lg font-semibold"
+        >
           Home
         </Link>
-        <Link href="/all-products" className="hover:text-gray-900 transition">
+        <Link
+          href="/all-products"
+          className="hover:text-gray-900 transition text-lg font-semibold"
+        >
           Gallery
         </Link>
-        <Link href="/" className="hover:text-gray-900 transition">
+        <Link
+          href="/"
+          className="hover:text-gray-900 transition text-lg font-semibold"
+        >
           Vision
         </Link>
-        {/* <Link href="/" className="hover:text-gray-900 transition">
-          Contact
-        </Link> */}
-
         {isSeller && (
           <button
             onClick={() => router.push('/seller')}
-            className="text-xs border px-4 py-1.5 rounded-full"
+            className="text-sm font-semibold border px-4 py-2 rounded-full"
           >
             Seller Dashboard
           </button>
         )}
       </div>
 
-      <ul className="hidden md:flex items-center gap-4 ">
-        {/* <Image className="w-4 h-4" src={assets.search_icon} alt="search icon" /> */}
-        {user ? (
-          <>
-            <UserButton>
-              <UserButton.MenuItems>
-                <UserButton.Action
-                  label="Cart"
-                  labelIcon={<CartIcon />}
-                  onClick={() => router.push('/cart')}
-                />
-              </UserButton.MenuItems>
-              <UserButton.MenuItems>
-                <UserButton.Action
-                  label="My Orders"
-                  labelIcon={<BagIcon />}
-                  onClick={() => router.push('/my-orders')}
-                />
-              </UserButton.MenuItems>
-            </UserButton>
-          </>
-        ) : (
-          <button
-            onClick={openSignIn}
-            className="flex items-center gap-2 hover:text-gray-900 transition"
-          >
-            <Image src={assets.user_icon} alt="user icon" />
-            Account
-          </button>
-        )}
-      </ul>
+      <div className="w-[160px] flex justify-end">
+        {' '}
+        {/* Fixed width container for user section */}
+        <ul className="hidden md:flex items-center gap-4 ">
+          {user ? (
+            <>
+              <UserButton>
+                <UserButton.MenuItems>
+                  <UserButton.Action
+                    label="Cart"
+                    labelIcon={<CartIcon />}
+                    onClick={() => router.push('/cart')}
+                  />
+                </UserButton.MenuItems>
+                <UserButton.MenuItems>
+                  <UserButton.Action
+                    label="My Orders"
+                    labelIcon={<BagIcon />}
+                    onClick={() => router.push('/my-orders')}
+                  />
+                </UserButton.MenuItems>
+              </UserButton>
+            </>
+          ) : (
+            <button
+              onClick={openSignIn}
+              className="flex items-center gap-2 hover:text-gray-900 transition"
+            >
+              <Image src={assets.user_icon} alt="user icon" />
+              Account
+            </button>
+          )}
+        </ul>
+      </div>
 
       <div className="flex items-center md:hidden gap-3">
         {isSeller && (
           <button
             onClick={() => router.push('/seller')}
-            className="text-xs border px-4 py-1.5 rounded-full"
+            className="text-sm font-semibold border px-4 py-2 rounded-full"
           >
             Seller Dashboard
           </button>
