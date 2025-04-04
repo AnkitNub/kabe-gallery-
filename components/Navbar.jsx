@@ -61,14 +61,14 @@ const Navbar = () => {
               <UserButton>
                 <UserButton.MenuItems>
                   <UserButton.Action
-                    label="Cart"
+                    label="カート"
                     labelIcon={<CartIcon />}
                     onClick={() => router.push('/cart')}
                   />
                 </UserButton.MenuItems>
                 <UserButton.MenuItems>
                   <UserButton.Action
-                    label="My Orders"
+                    label="私の注文"
                     labelIcon={<BagIcon />}
                     onClick={() => router.push('/my-orders')}
                   />
@@ -93,7 +93,7 @@ const Navbar = () => {
             onClick={() => router.push('/seller')}
             className="text-lg font-semibold border px-4 py-2 rounded-full"
           >
-            Seller Dashboard
+            Admin Dashboard
           </button>
         )}
         {user ? (
